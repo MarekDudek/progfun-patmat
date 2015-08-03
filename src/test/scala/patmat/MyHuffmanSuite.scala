@@ -9,8 +9,15 @@ import org.scalatest.junit.JUnitRunner
 class MyHuffmanSuite extends FunSuite {
 
   import patmat.Huffman._
-  
+
+  val shortList = List('a', 'b', 'a')
+  val shortFreq = List(('a', 2), ('b', 1))
+
   test("times") {
-    assert(times(List('a', 'b', 'a')) === List(('a', 2), ('b', 1)))
+    assert(times(shortList) === shortFreq)
+  }
+
+  test("leaf list") {
+    assert(makeOrderedLeafList(shortFreq) === List(Leaf('b', 1), Leaf('a', 2)))
   }
 }
